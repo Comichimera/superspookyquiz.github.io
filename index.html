@@ -3,7 +3,7 @@
 <head>
     <title>The Impossible Quiz</title>
     <link rel="icon" type="image/x-icon" href=IconPerhaps.png>
-    <style>
+	<style>
         html {
             background-color: black;
             background-image: url(QuizBackground.png);
@@ -12,7 +12,6 @@
             background-size: cover;
             color: white;
         }
-
         body {
             text-align: center;
             font-family: Arial, sans-serif;
@@ -28,8 +27,10 @@
         }
 
         #lives {
-            font-size: 18px;
+            font-size: 45px;
             margin-bottom: 10px;
+            position: absolute;
+            top: 50%;
         }
 
         .options {
@@ -43,16 +44,15 @@
             margin: 10px;
         }
 
-            .option-container .option {
-                padding: 10px 20px;
-                font-size: 18px;
-                cursor: pointer;
-                background-color: #3498db;
-                color: #fff;
-                border: none;
-                width: 300px;
-            }
-
+        .option-container .option {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+			width: 300px;
+        }
         .fithoption-container .option {
             position: absolute;
             padding: 175px 250px;
@@ -60,11 +60,17 @@
             cursor: pointer;
             background-color: #3498db;
             color: #fff;
-            width: 100px;
+			width: 100px;
             right: 0%;
             top: 73%;
             background: transparent;
             border: none;
+        }
+        #MinusLifeText {
+            position: absolute;
+            top: 70%;
+            font-size: 500%;
+            visibility:hidden;
         }
     </style>
 </head>
@@ -234,6 +240,7 @@
             optionElements[1].disabled = true;  
             optionElements[2].disabled = true; 
             optionElements[3].disabled = true;
+            document.getElementById("MinusLifeText").style.visibility='visible';
             var timer = setInterval(function(){enableBtns()},1000);
         }
 
@@ -243,9 +250,11 @@
             optionElements[1].disabled = false;  
             optionElements[2].disabled = false; 
             optionElements[3].disabled = false;
+            document.getElementById("MinusLifeText").style.visibility='hidden';
         }
 
         loadQuestion();
     </script>
+    <div id="MinusLifeText"><h1>-1 Life</h1></div>
 </body>
 </html>
