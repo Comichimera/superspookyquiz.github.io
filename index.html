@@ -190,6 +190,9 @@
         let lives = 3;
         let input = "";
         let HowDareYouTriggered = false;
+        var start=new Date().getTime();
+        var currentMillisecondsPassed = 0
+        var FinalTime = ""
         
         function loadQuestion() {
             const questionElement = document.getElementById("question");
@@ -272,10 +275,12 @@
         }
 
         function endQuiz() {
+            currentMillisecondsPassed=new Date().getTime()-start
             const questionElement = document.getElementById("question");
             const optionElements = document.querySelectorAll(".option");
+            millisToMinutesAndSeconds()
 
-            questionElement.textContent = "Quiz Completed!";
+            questionElement.textContent = "Quiz Completed in " + FinalTime;
             optionElements.forEach((element) => (element.style.display = "none"));
             confetti({
                 particleCount: 10000,
@@ -299,6 +304,11 @@
 
         }
         
+        function millisToMinutesAndSeconds() {
+            var minutes = Math.floor(currentMillisecondsPassed / 60000);
+            var seconds = ((currentMillisecondsPassed % 60000) / 1000).toFixed(0);
+            FinalTime = minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+        }
 
         document.addEventListener("keyup", function(event) {
             if (currentQuestionIndex === 14) {
