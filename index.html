@@ -193,6 +193,7 @@
         var start=new Date().getTime();
         var currentMillisecondsPassed = 0
         var FinalTime = ""
+        var numberOfAttempts = 1
         
         function loadQuestion() {
             const questionElement = document.getElementById("question");
@@ -262,12 +263,14 @@
                     HowDareYouTriggered = true;
                     currentQuestionIndex = 0;
                     lives = 3;
+                    numberOfAttempts =+1
                 }
                 setTimeout("ShowIt()", 1);
                 ShowIt()
                 if (lives <= 0) {
                     currentQuestionIndex = 0;
                     lives = 3;
+                    numberOfAttempts =+1
                 } else {
                 }
                 loadQuestion();
@@ -279,7 +282,8 @@
             const questionElement = document.getElementById("question");
             const optionElements = document.querySelectorAll(".option");
             millisToMinutesAndSeconds()
-
+            document.getElementById("MinusLifeText").textContent = "Number of Attempts: " + numberOfAttempts
+            document.getElementById("MinusLifeText").style.visibility = "visible";
             questionElement.textContent = "Quiz Completed in " + FinalTime;
             optionElements.forEach((element) => (element.style.display = "none"));
             confetti({
