@@ -12,4 +12,7 @@ Question 11 - Jack-o-Lanterns are pumpkin corpses
 Question 12 - This quiz is the scariest ever. Yes, even more scary than League of Legends
 Question 13 - Hey, that word is a bit insensitive
 Question 14 - The torch provides light
-Question 15 - Javascript.
+Question 15 - Physically Typing "javascript".
+Question 16 - This is the best quiz ever.
+
+And Congratulations, you have chated your way to victory!
