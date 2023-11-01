@@ -216,11 +216,12 @@
                 }
             } else {
                 lives--;
+                setTimeout("ShowIt()", 1);
+                ShowIt()
                 if (lives <= 0) {
                     currentQuestionIndex = 0;
                     lives = 3;
                 } else {
-                    disableBtns()
                 }
                 loadQuestion();
             }
@@ -234,24 +235,16 @@
             optionElements.forEach((element) => (element.style.display = "none"));
         }
 
-        function disableBtns() {
-            const optionElements = document.querySelectorAll(".option");
-            optionElements[0].disabled = true; 
-            optionElements[1].disabled = true;  
-            optionElements[2].disabled = true; 
-            optionElements[3].disabled = true;
-            document.getElementById("MinusLifeText").style.visibility='visible';
-            var timer = setInterval(function(){enableBtns()},1000);
+        function ShowIt() {
+            document.getElementById("MinusLifeText").style.visibility = "visible";
+            setTimeout("HideIt()", 1000);
+            HideIt
         }
 
-        function enableBtns(){
-            const optionElements = document.querySelectorAll(".option");
-            optionElements[0].disabled = false; 
-            optionElements[1].disabled = false;  
-            optionElements[2].disabled = false; 
-            optionElements[3].disabled = false;
-            document.getElementById("MinusLifeText").style.visibility='hidden';
+        function HideIt() {
+            document.getElementById("MinusLifeText").style.visibility = "hidden";
         }
+        
 
         loadQuestion();
     </script>
