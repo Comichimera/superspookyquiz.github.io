@@ -161,6 +161,11 @@
                 options: ["Some Scissors", "A Hole", "Not Wearing One", "Nothing"],
                 correct: 4,
             },
+            {
+                question: "Question 15: Scare Me.",
+                options: ["Boo", "Nope", "How can I scare a soulless machine?", "Object-Oriented Programming"],
+                correct: 4,
+            },
             /*
             Question Template
             {
@@ -172,6 +177,7 @@
 
         let currentQuestionIndex = 0;
         let lives = 3;
+        let input = "";
 
         function loadQuestion() {
             const questionElement = document.getElementById("question");
@@ -233,6 +239,7 @@
                     endQuiz();
                 }
             } else {
+LoseLife:
                 lives--;
                 setTimeout("ShowIt()", 1);
                 ShowIt()
@@ -262,6 +269,38 @@
         function HideIt() {
             document.getElementById("MinusLifeText").style.visibility = "hidden";
         }
+        
+
+        document.addEventListener("keyup", function(event) {
+            if (currentQuestionIndex === 14) {
+                var answer = "JAVASCRIPT";
+                input = input + String.fromCharCode(event.keyCode)
+                for (let i = 0; i < input.length; i++){
+                    if (input[i] === answer[i]) {
+                        if (i === 9){
+                            currentQuestionIndex++;
+                            if (currentQuestionIndex < questions.length) {
+                                loadQuestion();
+                            } else {
+                                endQuiz();
+                            }
+                        }
+                    } else {
+                        input="";
+                        lives--;
+                        setTimeout("ShowIt()", 1);
+                        ShowIt()
+                        if (lives <= 0) {
+                            currentQuestionIndex = 0;
+                            lives = 3;
+                        } else {
+                        }
+                        loadQuestion();
+                        break
+                    }
+                }
+            }
+        });
         
 
         loadQuestion();
