@@ -64,7 +64,6 @@
             right: 0%;
             top: 73%;
             background: transparent;
-            border: none;
         }
         #MinusLifeText {
             position: absolute;
@@ -151,6 +150,16 @@
                 options: ["A Horror Game", "This Game", "League of Legends", "Pop-Up Pirate"],
                 correct: 1,
             },
+            {
+                question: "Question 13: What's the only way to kill a zombie?",
+                options: ["Through Boredom", "This Quiz", "Through the Head", "We don't use the Z-Word Round these parts"],
+                correct: 3,
+            },
+            {
+                question: "Question 14: What can you use to make a Halloween Costume a little lighter?",
+                options: ["Some Scissors", "A Hole", "Not Wearing One", "Nothing"],
+                correct: 4,
+            },
             /*
             Question Template
             {
@@ -176,12 +185,17 @@
                     optionElements[i].textContent = currentQuestion.options[i];
                     optionElements[i].onclick = () => checkAnswer(i);
                     if (i === 4){
-                        if (currentQuestionIndex !== 13) {
-                        optionElements[i].disabled = true
-                        optionElements[i].style.visibility = 'hidden'
-                        } else {
+                        if (currentQuestionIndex === 7) {
                         optionElements[i].disabled = false
                         optionElements[i].style.visibility = 'visible'
+                        Question8
+                        } else if (currentQuestionIndex === 13) {
+                            optionElements[i].disabled = false
+                            optionElements[i].style.visibility = 'visible'
+                            Question14()
+                        } else {
+                        optionElements[i].disabled = true
+                        optionElements[i].style.visibility = 'hidden'
                         }
                     }
                 }
@@ -192,13 +206,24 @@
 
             livesElement.textContent = `Lives: ${lives}`;
         }
+        
+        function Question14(){
+            const optionfive = document.getElementById("option5");
+            optionfive.style.top="34%";
+            optionfive.style.right="80%";
+            optionfive.style.padding="120px 5px 120px 5px";
+        }
+        
+        function Question8(){
+            const optionfive = document.getElementById("option5");
+            optionfive.style.top="73%";
+            optionfive.style.right="0%";
+            optionfive.style.padding="175px 250px";
+        }
 
         function checkAnswer(selectedIndex) {
             const currentQuestion = questions[currentQuestionIndex];
             const optionElements = document.querySelectorAll(".option");
-            if (currentQuestionIndex > -1) {
-                selectedIndex = currentQuestion.correct
-            }
             if (selectedIndex === currentQuestion.correct) {
                 currentQuestionIndex++;
                 if (currentQuestionIndex < questions.length) {
