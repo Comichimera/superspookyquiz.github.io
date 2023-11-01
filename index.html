@@ -72,6 +72,11 @@
             font-size: 500%;
             visibility:hidden;
         }
+        #HowDareYou {
+            position: absolute;
+            top: 55%;
+            visibility:hidden;
+        }
     </style>
 </head>
 <body>
@@ -89,6 +94,7 @@
     <div class="fithoption-container">
         <button class="option" id="option5"></button>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script>
         const questions = [
             {
@@ -166,6 +172,11 @@
                 options: ["Boo", "Nope", "How can I scare a soulless machine?", "Object-Oriented Programming"],
                 correct: -1,
             },
+            {
+                question: "The Final Question: How much did you enjoy this quiz?",
+                options: ["I hate this quiz! and I hate you too!", "You can hardly call this monstrosity a quiz!", "I've had worse", "I LOVED IT!!!"],
+                correct: 3,
+            },
             /*
             Question Template
             {
@@ -175,10 +186,11 @@
             },*/
         ];
 
-        let currentQuestionIndex = 0;
+        let currentQuestionIndex = 15;
         let lives = 3;
         let input = "";
-
+        let HowDareYouTriggered = false;
+        
         function loadQuestion() {
             const questionElement = document.getElementById("question");
             const optionElements = document.querySelectorAll(".option");
@@ -237,10 +249,17 @@
                     loadQuestion();
                 } else {
                     endQuiz();
+                    
+                    
+                    
                 }
             } else {
-LoseLife:
                 lives--;
+                if (currentQuestionIndex === 15) {
+                    HowDareYouTriggered = true;
+                    currentQuestionIndex = 0;
+                    lives = 3;
+                }
                 setTimeout("ShowIt()", 1);
                 ShowIt()
                 if (lives <= 0) {
@@ -258,16 +277,26 @@ LoseLife:
 
             questionElement.textContent = "Quiz Completed!";
             optionElements.forEach((element) => (element.style.display = "none"));
+            confetti({
+                particleCount: 10000,
+                spread: 10000,
+                origin: {0: 0}
+            });
         }
 
         function ShowIt() {
             document.getElementById("MinusLifeText").style.visibility = "visible";
+            if (HowDareYouTriggered === true) {
+                document.getElementById("HowDareYou").style.visibility = "visible";
+            }
             setTimeout("HideIt()", 1000);
             HideIt
         }
 
         function HideIt() {
             document.getElementById("MinusLifeText").style.visibility = "hidden";
+            document.getElementById("HowDareYou").style.visibility = "hidden";
+
         }
         
 
@@ -306,5 +335,6 @@ LoseLife:
         loadQuestion();
     </script>
     <div id="MinusLifeText"><h1>-1 Life</h1></div>
+    <div id="HowDareYou"><h1><img src="HowDareYou.jpg" alt="How Dare You"></h1></div>
 </body>
 </html>
