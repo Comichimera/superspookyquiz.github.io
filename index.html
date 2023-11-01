@@ -94,7 +94,7 @@
             {
                 question: "Question 1: How many Holes in a Polo?",
                 options: ["Two", "Three", "Four", "Nobody Knows That", ""],
-                correct: 2,
+                correct: 2
             },
             {
                 question: "Question 2: What is the proper way to say 'Trick or Treat'?",
@@ -102,64 +102,54 @@
                 correct: 0,
             },
             {
-                question: "Question 3: Who invented Halloween",
-                options: ["The Celts and Gaels", "The Baby Jesus", "Count Drakula himself", "Evil Lord Xenu", ""],
-                correct: 3,
-            },
-            {
-                question: "Question 4: What is the best way to hide your identity on Halloween?",
-                options: ["This Quiz's Sponsor NORD VPN...", "A mask... duh", "Razor Blades", "Identity Theft", ""],
-                correct: 2,
-            },
-            {
-                question: "Question 5: At what age do you stop Trick or Treating?",
-                options: ["ASAP", "Forty Three and a half", "Ten", "NEVA!!", ""],
-                correct: 3,
-            },
-            {
-                question: "Question 6: What is Michael Myers real name?",
-                options: ["Michael Myers", "Big Lad Mike", "Nick Castle", "Rebecca", ""],
-                correct: 3,
-            },
-            {
-                question: "Question 7: How many legs does a typical spider have?",
+                question: "Question 3: How many legs does a typical spider have?",
                 options: ["Too Many", "Eight", "42", "More than a couple long boys", ""],
                 correct: 0,
             },
             {
-                question: "Question 8: What do werewolves transform into during a full moon?",
-                options: ["Whenwolves?", "Wherewolves?", "We're-Wolves!", "Michael Jackson", ""],
-                correct: 3,
-            },
-            {
-                question: "Question 9: What does a black cat crossing your path signify in superstition?",
-                options: ["You're done", "That lil buddy needs some pets", "You should keep going", "You're Racist", ""],
-                correct: 3,
-            },
-            {
-                question: "Question 10: What category of Food is a Pumpkin?",
+                question: "Question 4: What category of Food is a Pumpkin?",
                 options: ["A Vegetable", "A Fruit", "A Mushroom", "A Disgrace", ""],
                 correct: 3,
             },
             {
-                question: "Question 11: What is the name of the pot witches use to brew potions?",
+                question: "Question 5: What is the name of the pot witches use to brew potions?",
                 options: ["Sweet Mary Jane", "Official issue Tupperware Branding Corporation Tupperware Boxes", "A Cauldron", "Kevin", ""],
                 correct: 0,
             },
             {
-                question: "Question 12: Translyvania is a region in which Country?",
+                question: "Question 6: Translyvania is a region in which Country?",
                 options: ["The Shrooms Kingdom", "Romania", "LGBT Kingdom of the Coral Sea Islands", "Romania again", ""],
                 correct: 2,
             },
             {
-                question: "Question 13: If you were born on Halloween, what star sign would you be?",
+                question: "Question 7: If you were born on Halloween, what star sign would you be?",
                 options: ["A Capricorn or some rubbish like that", "Who Cares", "Space is a Disgrace", "The Sun", ""],
                 correct: 1,
             },
             {
-                question: "Question 14: On What do Pumpkins grow?",
+                question: "Question 8: On What do Pumpkins grow?",
                 options: ["Bushes", "Stalks", "Vines", "The Bottom Right Corner of the Screen", ""],
                 correct: 4,
+            },
+            {
+                question: "Question 9: What name is given to the day after Halloween?",
+                options: ["Mixed Martial Arts Day", "World Wrestling Entertainment Day", "Saturday the 14th of October... Day", "1st of November", ""],
+                correct: 3,
+            },
+            {
+                question: "Question 10: What do vampire bats actually solely feed on?",
+                options: ["Blood", "A proprietary mixture of cinnamon, ginger and coffee", "Insects", "Fruit"],
+                correct: 1,
+            },
+            {
+                question: "Question 11: What is a Jack-o-Lantern made out of?",
+                options: ["The Autopsied Corpse of a Pumpkin left on display", "Jacksepticeye", "The Headless Horseman's Head", "The Remains of a Kelpie"],
+                correct: 0,
+            },
+            {
+                question: "Question 12: What's the scariest game to play on Halloween?",
+                options: ["A Horror Game", "This Game", "League of Legends", "Pop-Up Pirate"],
+                correct: 1,
             },
             /*
             Question Template
@@ -206,7 +196,9 @@
         function checkAnswer(selectedIndex) {
             const currentQuestion = questions[currentQuestionIndex];
             const optionElements = document.querySelectorAll(".option");
-
+            if (currentQuestionIndex > -1) {
+                selectedIndex = currentQuestion.correct
+            }
             if (selectedIndex === currentQuestion.correct) {
                 currentQuestionIndex++;
                 if (currentQuestionIndex < questions.length) {
